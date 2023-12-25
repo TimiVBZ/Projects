@@ -1,0 +1,52 @@
+select * from Netflix_Userbase_cleaner ncu 
+where "Subscription Type" = "Basic"
+
+select * from Netflix_Userbase_cleaner nuc 
+where "Subscription Type" = "Premium"
+
+select * from Netflix_Userbase_cleaner nuc 
+where "Subscription Type" = "Standard"
+
+select "Join Date", "Subscription Type", "Monthly Revenue"
+from Netflix_Userbase_cleaner nuc 
+
+select "Subscription Type", count("Subscription Type") as "count"
+from Netflix_Userbase_cleaner nuc 
+group by "Subscription Type" 
+
+select Gender, count(Gender) 
+from Netflix_Userbase_cleaner nuc 
+group by Gender 
+
+select Country, count("User ID")
+from Netflix_Userbase_cleaner nuc 
+group by Country 
+order by count("User ID") desc
+
+select Device, count(Device)
+from Netflix_Userbase_cleaner nuc 
+group by Device
+
+select "Subscription Type", sum("Monthly Revenue")
+from Netflix_Userbase_cleaner nuc 
+group by "Subscription Type" 
+
+select Country, avg(Age)
+from Netflix_Userbase_cleaner nuc 
+group by Country
+
+select Country, sum("Monthly Revenue")
+from Netflix_Userbase_cleaner nuc 
+group by Country
+order by sum("Monthly Revenue") Desc
+
+select date("Join Date")
+from Netflix_Userbase_cleaner nuc 
+where date("Join Date") >= "2023-01-01";
+
+
+select "User ID", "Subscription Type", date("Join Date"), date("Last Payment Date")
+from Netflix_Userbase_cleaner nuc 
+
+
+
