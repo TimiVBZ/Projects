@@ -1,0 +1,45 @@
+select * from Simternship_analytics sa 
+
+
+select "Round", Revenue from Simternship_analytics sa 
+order by "Round", Revenue DESC
+
+select Channel, sum("Total Cost"), sum(Revenue)
+from Simternship_analytics sa 
+group by Channel
+
+select "Round", Channel, "Post Type", "Total Cost", Revenue
+from Simternship_analytics sa 
+where "Post Type" = 'sponsored'
+order by Revenue DESC
+
+select "Round", sum(Revenue)
+from Simternship_analytics sa 
+group by "Round"
+order by "Round"
+
+select Channel, ((Revenue/sum(revenue))*100) as percentage_of_rev
+from Simternship_analytics sa 
+group by Channel
+
+select "All_total", sum(Revenue)
+from Simternship_analytics sa 
+
+/*Influencers data*/
+select * from Simternship_influencer_analytics sia 
+
+select Channel, sum("Total Cost"), sum(Revenue)
+from Simternship_influencer_analytics sia 
+group by Channel
+
+select "All_total", sum(Revenue)
+from Simternship_influencer_analytics sia 
+
+Select Channel, count("Post Quantity"), sum(Engagements)
+from Simternship_influencer_analytics sia 
+group by Channel
+having count("Post Quantity") > 0
+
+
+
+
