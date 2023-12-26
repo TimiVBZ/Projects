@@ -1,0 +1,34 @@
+install.packages("tidyverse")
+library(tidyverse)
+install.packages("ggplot2")
+library(ggplot2)
+install.packages("dplyr")
+library(dplyr)
+install.packages("readr")
+library(readr)
+
+id = c(1:10)
+name = c("John Doe", "Roy Tim", "Paul Oki", "Liam Konh", "Lit Houi", "Wed Nes", "Koit Loki", "Gio Noper", "Nioe Klas", "Drent Utoip")
+job_title = c("Engineer", "Engineer", "Manager", "Data Analyst", "Data Scientist", "Data Analyst", "Accountant", "Financial Officer", "Programmer", "Marketing Advisor")
+emp = data.frame(id, name, job_title)
+print(emp)
+
+separate(emp, name, into=c('first_name', 'last_name'), sep=' ')
+#using separate() to split the first and last name into inndividual columns
+
+wage = c(13500, 14000, 25000, 12000, 19000, 15000, 18493, 17450, 19900, 13200)
+emp['wage'] = wage
+emp
+#adding "wage" column to emp table
+
+hours = c(8,5,7,3,4,6,2,7,9,4)
+emp['hours'] = hours
+emp
+#adding "hours" column to the emp table
+
+mutate(emp, salary = wage*hours)
+mutate(emp, salary = wage*hours, check = salary - (salary*0.32))
+#using mutate() to add a new column "salary"
+
+unite(emp,'new_id', job_title, id, sep='_')
+# using unite() to join "job_title" with "id" to create a "new_id" for employers
