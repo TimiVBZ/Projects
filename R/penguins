@@ -1,0 +1,44 @@
+install.packages("tidyverse")
+library(tidyverse)
+install.packages("ggplot2")
+library(ggplot2)
+install.packages("dplyr")
+library(dplyr)
+install.packages("readr")
+library(readr)
+
+install.packages("palmerpenguins")
+library(palmerpenguins)
+view(penguins)
+summary(penguins)
+
+filtered_peng = penguins %>%
++ drop_na()
+summary(filtered_peng)
+
+filtered_peng2 = filtered_peng %>%
++ filter(sex == "male") %>%
++ arrange(body_mass_g)
+mutate(filtered_peng2, age_2020 = 2020-year)
+summary(filtered_peng2)
+
+filtered_bill = penguins %>%
++ drop_na() %>%
++ group_by(species) %>%
++ summarize(mean_bmg = mean(body_mass_g))
+print(filtered_bill)
+
+data_bills = penguins %>%
++ select('species','sex','bill_length_mm','bill_depth_mm') %>%
++ drop_na() %>%
++ arrange(bill_length_mm)
+print(data_bills, n = 20)
+
+data_bill %>%
++ rename("gender" = "sex")
+
+#data vizualization
+ggplot(data=data_bill)+geom_point(mapping=aes(x=sex,y=bill_length_mm, color=species))
+ggplot(data=data_bill)+geom_bar(mapping=aes(x=sex, color=species))+facet_wrap(~species)
+ggplot(data=data_bill)+geom_bar(mapping=aes(y=bill_length_mm, color=species))+facet_wrap(~species)+labs(title = "Penguins Species")
+ggsave("Penguins.png")
