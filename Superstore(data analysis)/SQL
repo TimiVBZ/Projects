@@ -1,1 +1,49 @@
+select * from Sample_Superstore_SQL sss 
+
+/* This is to answer the business questions from the Medium website on the data*/
+/*---------------------------------------------------------------------------*/
+
+/* Which Category is Best Selling and Most Profitable?*/
+select Category, sum(Sales), sum(Profit), sum(Quantity)
+from Sample_Superstore_SQL sss 
+group by Category 
+
+/* What are the Best Selling and Most Profitable Sub-Category?*/
+select "Sub-Category", sum(sales), sum(Profit)
+from Sample_Superstore_SQL sss 
+group by "Sub-Category" 
+/*Order by sum(sales) DESC*/ -- To find best selling sub-category
+/*Order by sum(Profit) DESC*/ -- To find most profitable sub-category
+
+
+/* Which is the Top Selling Sub-Category?*/
+select "Sub-Category", sum(Quantity)
+from Sample_Superstore_SQL sss 
+group by "Sub-Category"
+order by sum(Quantity) DESC
+
+/* Which Customer Segment is Most Profitable?*/
+select Segment, sum(Profit)
+from Sample_Superstore_SQL sss 
+group by Segment
+order by  sum(Profit) DESC
+
+/* Which is the Preferred Ship Mode?*/
+select "Ship Mode", count("Order  ID")
+from Sample_Superstore_SQL sss 
+group by "Ship Mode"
+order by count("Order ID") DESC
+
+/* Which Region is the Most Profitable?*/
+select Region, sum(Profit)
+from Sample_Superstore_SQL sss 
+group by Region
+order by sum(Profit) DESC
+
+/* Which City has the Highest Number of Sales?*/
+select City, sum(Sales)
+from Sample_Superstore_SQL sss 
+group by City
+order by sum(Sales) DESC
+limit 10
 
