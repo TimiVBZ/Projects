@@ -1,5 +1,5 @@
 # Projects
-Some small software practices (beginner level) which include:
+Some software practices (beginner level) which include:
 - Python
 - SQL (Oracle and SQLite - DBEAVER GUI, MySQL - MySQL Workbench)
 - R programming
